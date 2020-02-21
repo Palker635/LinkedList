@@ -8,7 +8,7 @@
      */
     public class LinkedList {
         Node first;
-
+        int size;
         /**
          * Constructor to create an empty list.
          */
@@ -22,7 +22,14 @@
          * @param newNode
          */
         public void addLast(Node newNode) {
-
+            size++;
+            for (Node node = first; node != null; node = node.getNext()) {
+                if (node.getNext() == null) {
+                    node.next = newNode;
+                    return;
+                }
+            }
+            first = newNode;
         }
 
         /**
@@ -41,7 +48,8 @@
          * @return
          */
         public int size() {
-            return 0;
+
+            return size;
         }
 
         /**
@@ -49,6 +57,7 @@
          * @return
          */
         public boolean isEmpty() {
+
             return size() == 0;
         }
 
